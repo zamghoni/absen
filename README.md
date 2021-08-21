@@ -1,2 +1,0 @@
-# absens
-Aplikasi Absen Online
