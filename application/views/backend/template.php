@@ -60,15 +60,15 @@
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
 				<li>
-					<li>
-						<a href="emailbox.html">
+					<li class="mm-<?=activate_menu('dashboard')?>">
+						<a href="<?=site_url('dashboard')?>">
 							<div class="parent-icon icon-color-1"><i class="bx bx-home"></i>
 							</div>
 							<div class="menu-title">Dashboard</div>
 						</a>
 					</li>
-					<li>
-						<a href="emailbox.html">
+					<li class="mm-<?=activate_menu('riwayat')?>">
+						<a href="<?=site_url('riwayat')?>">
 							<div class="parent-icon icon-color-2"><i class="bx bx-task"></i>
 							</div>
 							<div class="menu-title">Riwayat Kehadiran</div>
@@ -159,18 +159,20 @@
 				<div class="page-content-wrapper">
 					<div class="page-content">
 						<!--breadcrumb-->
-						<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-							<div class="breadcrumb-title pr-3"><?=$page?></div>
-							<div class="pl-3">
-								<nav aria-label="breadcrumb">
-									<ol class="breadcrumb mb-0 p-0">
-										<li class="breadcrumb-item"><a href="<?=site_url('dashboard')?>"><i class='bx bx-home-alt'></i></a>
-										</li>
-										<li class="breadcrumb-item active" aria-current="page"><?=$subpage?></li>
-									</ol>
-								</nav>
+						<?php if ($this->uri->segment(1) != 'dashboard'){ ?>
+							<div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+								<div class="breadcrumb-title pr-3"><?=$page?></div>
+								<div class="pl-3">
+									<nav aria-label="breadcrumb">
+										<ol class="breadcrumb mb-0 p-0">
+											<li class="breadcrumb-item"><a href="<?=site_url('dashboard')?>"><i class='bx bx-home-alt'></i></a>
+											</li>
+											<li class="breadcrumb-item active" aria-current="page"><?=$subpage?></li>
+										</ol>
+									</nav>
+								</div>
 							</div>
-						</div>
+						<?php } ?>
 						<!--end breadcrumb-->
 						<?=$contents;?>
 					</div>
@@ -234,7 +236,15 @@
 				});
 				$('#time').bootstrapMaterialDatePicker({
 					date: false,
-					format: 'HH:mm'
+					format: 'HH:mm:ss'
+				});
+				$('#time2').bootstrapMaterialDatePicker({
+					date: false,
+					format: 'HH:mm:ss'
+				});
+				$('#time3').bootstrapMaterialDatePicker({
+					date: false,
+					format: 'HH:mm:ss'
 				});
 			});
 		</script>

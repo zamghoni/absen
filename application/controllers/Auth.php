@@ -43,11 +43,11 @@ class Auth extends CI_Controller{
         $this->session->set_flashdata('success','Selamat Datang...<b> '. $this->session->userdata('username') .'</b> pada halaman Dashboard, salam semangat dan sukses selalu');
         redirect('dashboard','refresh');
       } else {
-        $this->session->set_flashdata('error','<center>Login gagal, <br> Password salah</center>');
+        $this->session->set_flashdata('error','<b>Login gagal!</b> Password yang anda masukkan salah');
         redirect('auth','refresh');
       }
     } else {
-      $this->session->set_flashdata('error','<center>Login gagal, <br> Username '.$this->input->post('username').' tidak terdaftar</center>');
+      $this->session->set_flashdata('error','<b>Login gagal!</b> Username '.$this->input->post('username').' tidak terdaftar');
       redirect('auth','refresh');
     }
   }

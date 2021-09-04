@@ -138,23 +138,10 @@
                 <div>
                   <p class="mb-0">Absensi Masuk</p>
                 </div>
-                <?php if ($absensi->absen_masuk == null) {?>
                   <div class="ml-auto btn btn-sm btn-primary"><span><i class="bx bx-user-x"></i> Belum Absen</span>
-                <?php } else  if ($absensi->absen_masuk <= $pengaturan->bts_absen_masuk) { ?>
-                  <div class="ml-auto btn btn-sm btn-success"><span><i class="bx bx-user-check"></i> Sudah Absen</span>
-                <?php } else { ?>
-                  <div class="ml-auto btn btn-sm btn-danger"><span><i class="bx bx-user-minus"></i> Absen Terlambat</span>
-                <?php } ?>
                 </div>
               </div>
-              <?php if ($absensi->absen_masuk == null){ ?>
                 <h4 class="mb-0">00:00:00</h4>
-              <?php } else { ?>
-              <h4 class="mb-0"><?=$absensi->absen_masuk?></h4>
-              <?php } ?>
-              <?php if ($absensi->tgl_absen == date('Y-m-d') && $absensi->id_user == $this->fungsi->user_login()->id && $absensi->absen_masuk != null){ ?>
-
-              <?php }else{ ?>
               <?php
               echo form_open_multipart('absensi/hadir'); ?>
               <div class="form-group row">
@@ -178,7 +165,6 @@
                 </div>
               </div>
               <?php echo form_close(); ?>
-            <?php } ?>
             </div>
           </div>
         </div>
@@ -189,28 +175,10 @@
                 <div>
                   <p class="mb-0">Absensi Pulang</p>
                 </div>
-                <?php if ($absensi->absen_pulang == null) { ?>
                   <div class="ml-auto btn btn-sm btn-primary"><span> <i class="bx bx-user-x"></i> Belum Absen</span>
-                <?php } else { ?>
-                  <div class="ml-auto btn btn-sm btn-success"><span> <i class="bx bx-user-check"></i> Sudah Absen</span>
-                <?php } ?>
                 </div>
               </div>
-              <?php if ($absensi->absen_pulang == null){ ?>
                 <h4 class="mb-0">00:00:00</h4>
-              <?php } else { ?>
-              <h4 class="mb-0"><?=$absensi->absen_pulang?></h4>
-              <?php } ?>
-              <?php if ($absensi->absen_pulang != null){ ?>
-
-              <?php } else { ?>
-              <div class="form-group row">
-                <label class="col-sm-4 col-form-label"></label>
-                <div class="col-sm-8">
-                  <a href="<?=site_url('absensi/pulang/'.$absensi->id_absensi)?>" title="Klik untuk absen pulang"><span class='btn btn-sm btn-primary px-4'><span class="bx bx-save"></span> Absen Pulang</span></a>
-                </div>
-              </div>
-            <?php } ?>
             </div>
           </div>
         </div>

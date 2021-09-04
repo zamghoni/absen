@@ -10,15 +10,32 @@ class Dashboard extends CI_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
+    $this->load->model(array('M_user','M_absensi','M_pengaturan'));
   }
 
   public function index()
   {
+    $id = $this->fungsi->user_login()->id;
+    $query = $this->M_absensi->get($id);
+		if ($query->num_rows() > 0) {
+			$absensi = $query->row();
     $data = array(
       'page' => 'Dashboard',
       'subpage' => '',
+      'pegawai' => $this->M_user->get(),
+      'absensi' => $absensi,
+      'pengaturan' => $this->M_pengaturan->get(1)->row(),
     );
     $this->template->load($this->foldertemplate.'template',$this->folder.'data', $data);
+    } else {
+      $data = array(
+        'page' => 'Dashboard',
+        'subpage' => '',
+        'pegawai' => $this->M_user->get(),
+        'pengaturan' => $this->M_pengaturan->get(1)->row(),
+      );
+      $this->template->load($this->foldertemplate.'template',$this->folder.'data2', $data);
+    }
   }
 
 }

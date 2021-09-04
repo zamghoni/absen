@@ -51,19 +51,19 @@
       <div class="form-group row">
         <label class="col-sm-2 col-form-label" for="jam_masuk">Mulai Absen Masuk</label>
         <div class="col-sm-10">
-          <input type="text" value="<?=$row->jam_masuk?>" name="jam_masuk" id="jam_masuk" class="form-control timepicker" required>
+          <input type="text" value="<?=$row->jam_masuk?>" name="jam_masuk" id="time" class="form-control" required>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label" for="bts_absen_masuk">Batas Absen Masuk</label>
         <div class="col-sm-10">
-          <input type="text" value="<?=$row->bts_absen_masuk?>" name="bts_absen_masuk" id="bts_absen_masuk" class="form-control timepicker" required>
+          <input type="text" value="<?=$row->bts_absen_masuk?>" name="bts_absen_masuk" id="time2" class="form-control" required>
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label" for="bts_absen_pulang">Batas Absen Pulang</label>
         <div class="col-sm-10">
-          <input type="text" value="<?=$row->bts_absen_pulang?>" name="bts_absen_pulang" id="bts_absen_pulang" class="form-control timepicker" required>
+          <input type="text" value="<?=$row->bts_absen_pulang?>" name="bts_absen_pulang" id="time3" class="form-control" required>
         </div>
       </div>
       <div class="form-group row">

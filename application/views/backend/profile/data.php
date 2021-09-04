@@ -86,13 +86,12 @@
               <div class="form-body">
                 <?php
                 $attributes = array('onsubmit' => 'return tambah(this)');
-                echo form_open_multipart('user/process',$attributes); ?>
+                echo form_open_multipart('profile/process',$attributes); ?>
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label" for="nama_lengkap">Nama Lengkap</label>
                   <input type="hidden" name="id" value="<?=$this->fungsi->user_login()->id?>">
                   <div class="col-sm-9">
-                    <input type="text" value="<?=$row->nama_lengkap?>" name="nama_lengkap" id="nama_lengkap" class="form-control" required
-                    oninvalid="this.setCustomValidity('Masukkan Nama Lengkap disini')" oninput="setCustomValidity('')">
+                    <input type="text" value="<?=$row->nama_lengkap?>" name="nama_lengkap" id="nama_lengkap" class="form-control" required oninvalid="this.setCustomValidity('Masukkan Nama Lengkap disini')" oninput="setCustomValidity('')">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -151,7 +150,7 @@
                   <div class="form-body">
                     <?php
                     $attributes = array('onsubmit' => 'return tambah(this)');
-                    echo form_open_multipart('user/process',$attributes); ?>
+                    echo form_open_multipart('profile/ubah_password',$attributes); ?>
                     <input type="hidden" name="id" value="<?=$this->fungsi->user_login()->id?>">
                     <div class="form-group row">
                       <label class="col-sm-3 col-form-label" for="old_password" >Kata Sandi Lama</label>
@@ -174,7 +173,7 @@
                     <div class="form-group row">
                       <label class="col-sm-3 col-form-label"></label>
                       <div class="col-sm-9">
-                        <button type="submit" name="update" class="btn btn-primary px-4"><span class="bx bx-save"></span> Update</button>
+                        <button type="submit" name="updatesandi" class="btn btn-primary px-4"><span class="bx bx-save"></span> Update</button>
                       </div>
                     </div>
                     <?php echo form_close(); ?>
@@ -187,7 +186,6 @@
     </div>
   </div>
 </div>
-<?php if ($subpage == "Tambah") {?>
   <script>
   function tambah(form) {
     if (form.old_password.value=='') {
@@ -199,7 +197,7 @@
     		icon: 'bx bx-error',
     		continueDelayOnInactiveTab: false,
     		position: 'top right',
-    		msg: 'Kata Sandi Lama harus Diisi!'
+    		msg: 'Kata Sandi Lama harus diisi!'
     	});
       return false;
     } else
@@ -212,7 +210,7 @@
     		icon: 'bx bx-error',
     		continueDelayOnInactiveTab: false,
     		position: 'top right',
-    		msg: 'Kata Sandi Baru Harus Diisi!'
+    		msg: 'Kata Sandi Baru harus diisi!'
     	});
       return false;
     } else if (form.konf_password.value=='') {
@@ -224,7 +222,7 @@
     		icon: 'bx bx-error',
     		continueDelayOnInactiveTab: false,
     		position: 'top right',
-    		msg: 'Konfirmasi Kata Sandi Baru Harus Diisi!'
+    		msg: 'Konfirmasi Kata Sandi Baru harus diisi!'
     	});
       return false;
     } else if (form.konf_password.value!=form.password.value) {
@@ -236,7 +234,7 @@
     		icon: 'bx bx-error',
     		continueDelayOnInactiveTab: false,
     		position: 'top right',
-    		msg: 'Konfirmasi Kata Sandi Baru Tidak Sesuai!'
+    		msg: 'Konfirmasi Kata Sandi Baru tidak sama dengan Kata Sandi Baru'
     	});
       return false;
     } else {
@@ -244,4 +242,3 @@
     };
   }
   </script>
-<?php } ?>

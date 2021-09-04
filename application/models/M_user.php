@@ -86,10 +86,26 @@ class M_user extends CI_Model{
     $this->db->update('user', $params);
   }
 
+  public function edit_profile($post)
+  {
+    $params = [
+      'nama_lengkap' => $post['nama_lengkap'],
+      'username' => $post['username'],
+      'diubah' => date('Y-m-d H:i:s')
+    ];
+    if (!empty($_FILES['foto']['name'])) {
+      $upload = $this->_do_uploadfoto();
+      $params['foto'] = $upload;
+      unlink("./upload/foto/".$this->input->post('old_foto'));
+    }
+    $this->db->where('id', $post['id']);
+    $this->db->update('user', $params);
+  }
+
   public function ubah_password($post)
   {
-    if (!empty($post['sandi_baru'] && $post['konf_password'])) {
-      $params['password'] = password_hash($post['sandi_baru'], PASSWORD_BCRYPT);
+    if (!empty($post['password'] && $post['konf_password'])) {
+      $params['password'] = password_hash($post['password'], PASSWORD_BCRYPT);
     }
     $this->db->where('id', $post['id']);
     $this->db->update('user', $params);
