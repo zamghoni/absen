@@ -7,6 +7,7 @@ class Absensi extends CI_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
+    belum_login();
     $this->load->model(array('M_user','M_absensi'));
   }
 

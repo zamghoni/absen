@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
+    belum_login();
     $this->load->model(array('M_user','M_absensi','M_pengaturan'));
   }
 
@@ -25,6 +26,8 @@ class Dashboard extends CI_Controller{
       'pegawai' => $this->M_user->get(),
       'absensi' => $absensi,
       'pengaturan' => $this->M_pengaturan->get(1)->row(),
+      'masuk' => $this->M_absensi->get_masuk(),
+      'terlambat' => $this->M_absensi->get_terlambat(),
     );
     $this->template->load($this->foldertemplate.'template',$this->folder.'data', $data);
     } else {
@@ -33,6 +36,8 @@ class Dashboard extends CI_Controller{
         'subpage' => '',
         'pegawai' => $this->M_user->get(),
         'pengaturan' => $this->M_pengaturan->get(1)->row(),
+        'masuk' => $this->M_absensi->get_masuk(),
+        'terlambat' => $this->M_absensi->get_terlambat(),
       );
       $this->template->load($this->foldertemplate.'template',$this->folder.'data2', $data);
     }

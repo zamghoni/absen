@@ -10,7 +10,8 @@ class Riwayat extends CI_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
-    $this->load->model(array('M_absensi'));
+    belum_login();
+    $this->load->model(array('M_absensi','M_pengaturan'));
   }
 
   function index()
@@ -18,9 +19,19 @@ class Riwayat extends CI_Controller{
     $data = array(
       'page' => 'Riwayat',
       'subpage' => 'Data',
-      'row'  => $this->M_absensi->get(),
+      'row'  => $this->M_absensi->getall(),
+      'pengaturan' => $this->M_pengaturan->get(1)->row(),
     );
     $this->template->load($this->foldertemplate.'template',$this->folder.'data', $data);
+  }
+
+  public function del($id)
+  {
+    $this->M_absensi->del($id);
+    if ($this->db->affected_rows() > 0) {
+      $this->session->set_flashdata('success', 'Data berhasil dihapus');
+    }
+    redirect('riwayat');
   }
 
 }

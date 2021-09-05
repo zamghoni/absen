@@ -11,14 +11,49 @@ class M_absensi extends CI_Model{
 
   function get($id = null)
   {
+    $date = date('Y-m-d');
     $this->db->from('absensi');
     if ($id != null) {
       $this->db->where('id_user',$id);
+      $this->db->where('tgl_absen',$date);
       $this->db->order_by('tgl_absen','DESC');
     }
     $query = $this->db->get();
     return $query;
   }
+
+  function getall($id = null)
+  {
+    $date = date('Y-m-d');
+    $this->db->from('absensi');
+    $this->db->join('user', 'user.id = absensi.id_user', 'left');
+    $this->db->order_by('tgl_absen','DESC');
+    $query = $this->db->get();
+    return $query;
+  }
+
+  function get_masuk()
+  {
+    $date = date('Y-m-d');
+    $time = '08:00:00';
+    $this->db->from('absensi');
+    $this->db->where('tgl_absen',$date);
+    $this->db->where('absen_masuk <=', $time);
+    $query = $this->db->get();
+    return $query;
+  }
+
+  function get_terlambat()
+  {
+    $date = date('Y-m-d');
+    $time = '08:00:00';
+    $this->db->from('absensi');
+    $this->db->where('tgl_absen',$date);
+    $this->db->where('absen_masuk >', $time);
+    $query = $this->db->get();
+    return $query;
+  }
+
 
   public function masuk($post)
   {
@@ -39,5 +74,11 @@ class M_absensi extends CI_Model{
     $this->db->where('id_absensi', $id);
     $this->db->update('absensi', $params);
   }
+
+  public function del($id)
+	{
+    $this->db->where('id_absensi', $id);
+    $this->db->delete('absensi');
+	}
 
 }

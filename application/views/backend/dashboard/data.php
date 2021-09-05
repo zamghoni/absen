@@ -1,83 +1,5 @@
 <?php $this->view('message')?>
-<div class="row">
-  <div class="col-12 col-lg-3">
-    <div class="card radius-15 bg-voilet">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div>
-            <h2 class="mb-0 text-white"><?=$pegawai->num_rows()?> <span class='font-14 text-white'>Pegawai</span> </h2>
-          </div>
-          <div class="ml-auto font-35 text-white"><i class="bx bx-user-check"></i>
-          </div>
-        </div>
-        <div class="d-flex align-items-center">
-          <div>
-            <p class="mb-0 text-white">Jumlah Pegawai</p>
-          </div>
-          <!-- <div class="ml-auto font-14 text-white">+23.4%</div> -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 col-lg-3">
-    <div class="card radius-15 bg-primary-blue">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div>
-            <h2 class="mb-0 text-white">114 <i class='bx bxs-down-arrow-alt font-14 text-white'></i> </h2>
-          </div>
-          <div class="ml-auto font-35 text-white"><i class="bx bx-support"></i>
-          </div>
-        </div>
-        <div class="d-flex align-items-center">
-          <div>
-            <p class="mb-0 text-white">Refund Requests</p>
-          </div>
-          <div class="ml-auto font-14 text-white">+14.7%</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 col-lg-3">
-    <div class="card radius-15 bg-rose">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div>
-            <h2 class="mb-0 text-white">98 <i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
-          </div>
-          <div class="ml-auto font-35 text-white"><i class="bx bx-tachometer"></i>
-          </div>
-        </div>
-        <div class="d-flex align-items-center">
-          <div>
-            <p class="mb-0 text-white">Orders Cancelled</p>
-          </div>
-          <div class="ml-auto font-14 text-white">-12.9%</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-12 col-lg-3">
-    <div class="card radius-15 bg-sunset">
-      <div class="card-body">
-        <div class="d-flex align-items-center">
-          <div>
-            <h2 class="mb-0 text-white">208 <i class='bx bxs-up-arrow-alt font-14 text-white'></i> </h2>
-          </div>
-          <div class="ml-auto font-35 text-white"><i class="bx bx-user"></i>
-          </div>
-        </div>
-        <div class="d-flex align-items-center">
-          <div>
-            <p class="mb-0 text-white">New Users</p>
-          </div>
-          <div class="ml-auto font-14 text-white">+13.6%</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--end row-->
+<?php $this->view('backend/dashboard/top-dashboard'); ?>
 <div class="card-deck">
   <div class="card radius-15">
     <div class="card-body">
@@ -88,9 +10,6 @@
       </div>
       <hr>
       <div class="ml-auto">
-        <p style="text-indent: 20px">Nama : <?=$this->fungsi->user_login()->nama_lengkap?></p>
-        <p style="text-indent: 20px; margin-top: -15px">Hari, Tanggal : <span id="datenow"></span></p>
-        <p style="text-indent: 20px; margin-top: -15px">Waktu : <span id="clocknow"></span> WIB</p>
         <script type="text/javascript">
           function currentTime() {
             var date = new Date(); /* creating object of Date class */
@@ -138,7 +57,7 @@
                 <div>
                   <p class="mb-0">Absensi Masuk</p>
                 </div>
-                <?php if ($absensi->absen_masuk == null) {?>
+                <?php if ($absensi->tgl_absen == date('Y-m-d') && $absensi->absen_masuk == null) {?>
                   <div class="ml-auto btn btn-sm btn-primary"><span><i class="bx bx-user-x"></i> Belum Absen</span>
                 <?php } else  if ($absensi->absen_masuk <= $pengaturan->bts_absen_masuk) { ?>
                   <div class="ml-auto btn btn-sm btn-success"><span><i class="bx bx-user-check"></i> Sudah Absen</span>
@@ -174,7 +93,7 @@
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-8">
-                  <button type="submit" name="absen_masuk" class="btn btn-sm btn-primary px-4"><span class="bx bx-save"></span> Absen Masuk</button>
+                  <button type="submit" name="absen_masuk" class="btn btn-sm btn-primary px-4"><span class="bx bx-save"></span> Simpan Absen Masuk</button>
                 </div>
               </div>
               <?php echo form_close(); ?>
@@ -207,7 +126,7 @@
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-8">
-                  <a href="<?=site_url('absensi/pulang/'.$absensi->id_absensi)?>" title="Klik untuk absen pulang"><span class='btn btn-sm btn-primary px-4'><span class="bx bx-save"></span> Absen Pulang</span></a>
+                  <a href="<?=site_url('absensi/pulang/'.$absensi->id_absensi)?>" title="Klik untuk absen pulang"><span class='btn btn-sm btn-primary px-4'><span class="bx bx-save"></span> Simpan Absen Pulang</span></a>
                 </div>
               </div>
             <?php } ?>

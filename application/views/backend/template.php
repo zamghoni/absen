@@ -75,21 +75,23 @@
 						</a>
 					</li>
 				</li>
-				<li class="menu-label">Manajement</li>
-				<li class="mm-<?=activate_menu('user')?>">
-					<a href="<?=site_url('user')?>">
-						<div class="parent-icon icon-color-3"><i class="bx bx-user-check"></i>
-						</div>
-						<div class="menu-title">User</div>
-					</a>
-				</li>
-				<li class="mm-<?=activate_menu('pengaturan')?>">
-					<a href="<?=site_url('pengaturan')?>">
-						<div class="parent-icon icon-color-4"><i class="bx bx-cog"></i>
-						</div>
-						<div class="menu-title">Pengaturan</div>
-					</a>
-				</li>
+				<?php if ($this->fungsi->user_login()->role != 0){ ?>
+					<li class="menu-label">Manajement</li>
+					<li class="mm-<?=activate_menu('user')?>">
+						<a href="<?=site_url('user')?>">
+							<div class="parent-icon icon-color-3"><i class="bx bx-user-check"></i>
+							</div>
+							<div class="menu-title">User</div>
+						</a>
+					</li>
+					<li class="mm-<?=activate_menu('pengaturan')?>">
+						<a href="<?=site_url('pengaturan')?>">
+							<div class="parent-icon icon-color-4"><i class="bx bx-cog"></i>
+							</div>
+							<div class="menu-title">Pengaturan</div>
+						</a>
+					</li>
+				<?php } ?>
 				<li class="menu-label">Laporan</li>
 				<li class="mm-<?=activate_menu('laporan')?>">
 					<a href="<?=site_url('laporan')?>">
