@@ -24,10 +24,20 @@ class M_absensi extends CI_Model{
 
   function getall($id = null)
   {
+    $start_date = $this->input->post('dari_tgl');
+    $end_date = $this->input->post('sampai_tgl');
+    $id_user = $this->input->post('id_user');
     $date = date('Y-m-d');
+
     $this->db->from('absensi');
     $this->db->join('user', 'user.id = absensi.id_user', 'left');
-    $this->db->order_by('tgl_absen','DESC');
+    if($start_date && $end_date){
+      $this->db->order_by('tgl_absen','DESC');
+      $this->db->where('tgl_absen BETWEEN "'. date('Y-m-d', strtotime($start_date)). '" and "'. date('Y-m-d', strtotime($end_date)).'"');
+    }
+    if ($id_user) {
+      $this->db->where('id_user',$id_user);
+    }
     $query = $this->db->get();
     return $query;
   }

@@ -8,7 +8,7 @@
     </div>
     <hr/>
     <div class="table-responsive">
-      <table id="example2" class="table table-striped table-bordered" style="width:100%">
+      <table id="example" class="table table-striped table-bordered table-sm table-hover" style="width:100%">
         <thead>
           <tr>
             <th>No</th>
@@ -104,7 +104,7 @@
                   <a href="<?=site_url('riwayat/del/'.$data->id_absensi)?>" title="Hapus" class="btn btn-sm btn-danger hapus text-white"><i class="bx bx-trash"></i></a>
                 </td>
               </tr>
-            <?php } else if ($data->id_user == $this->fungsi->user_login()->id) { ?>
+            <?php $no++; } else if ($data->id_user == $this->fungsi->user_login()->id) { ?>
               <!-- riwayat halaman user -->
             <tr>
               <td><?=$no?></td>
