@@ -42,6 +42,23 @@ class M_absensi extends CI_Model{
     return $query;
   }
 
+  function get_user()
+  {
+    $id = $this->fungsi->user_login()->id;
+    $start_date = $this->input->post('dari_tgl');
+    $end_date = $this->input->post('sampai_tgl');
+    $date = date('Y-m-d');
+    $this->db->from('absensi');
+    $this->db->join('user', 'user.id = absensi.id_user', 'left');
+    if($start_date && $end_date){
+      $this->db->order_by('tgl_absen','DESC');
+      $this->db->where('tgl_absen BETWEEN "'. date('Y-m-d', strtotime($start_date)). '" and "'. date('Y-m-d', strtotime($end_date)).'"');
+    }
+    $this->db->where('absensi.id_user', $id);
+    $query = $this->db->get();
+    return $query;
+  }
+
   function get_masuk()
   {
     $date = date('Y-m-d');
@@ -63,7 +80,6 @@ class M_absensi extends CI_Model{
     $query = $this->db->get();
     return $query;
   }
-
 
   public function masuk($post)
   {

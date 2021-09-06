@@ -12,8 +12,8 @@
         <thead>
           <tr>
             <th>No</th>
-            <th>Tanggal</th>
             <th>Nama Lengkap</th>
+            <th>Tanggal</th>
             <th>Absen Masuk</th>
             <th>Absen Pulang</th>
             <th>Status</th>
@@ -27,8 +27,8 @@
               <!-- riwayat halaman admin -->
               <tr>
                 <td><?=$no?></td>
-                <td><?=date_indo($data->tgl_absen)?></td>
                 <td><?=$data->nama_lengkap?></td>
+                <td><?=date_indo($data->tgl_absen)?></td>
                 <td><?=$data->absen_masuk?> WIB</td>
                 <td><?php if ($data->absen_pulang == null){?>
                   Belum Absen Pulang
@@ -108,8 +108,8 @@
               <!-- riwayat halaman user -->
             <tr>
               <td><?=$no?></td>
-              <td><?=date_indo($data->tgl_absen)?></td>
               <td><?=$data->nama_lengkap?></td>
+              <td><?=date_indo($data->tgl_absen)?></td>
               <td><?=$data->absen_masuk?> WIB</td>
               <td><?php if ($data->absen_pulang == null){?>
                 Belum Absen Pulang

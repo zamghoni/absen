@@ -52,7 +52,11 @@
                       <label class="col-form-label">Proses :</label> <br>
                       <button type="submit" name="reset" class="btn btn-sm btn-outline-secondary m-1"><i class="bx bx-reset"></i> Reset</button>
                       <button type="submit" name="filter" title="Filter Data" class="btn btn-sm btn-primary m-1"><i class="bx bx-filter-alt"></i> Filter</button> <br>
-                      <button type="submit" name="export" title="Export Excel" class="btn btn-sm btn-success m-1"><i class="bx bx-spreadsheet"></i> Excel</button>
+                      <?php if ($this->fungsi->user_login()->role !=0){ ?>
+                        <button type="submit" name="export" title="Export Excel" class="btn btn-sm btn-success m-1"><i class="bx bx-spreadsheet"></i> Excel</button>
+                      <?php } else { ?>
+                        <button type="submit" name="export_user" title="Export Excel" class="btn btn-sm btn-success m-1"><i class="bx bx-spreadsheet"></i> Excel</button>
+                      <?php } ?>
                       <button type="submit" name="cetak" title="Cetak PDF" class="btn btn-sm btn-danger m-1"><i class="bx bx-file"></i> PDF</button>
                     </div>
                   </div>
