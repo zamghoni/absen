@@ -61,7 +61,9 @@ p.left{
       <thead>
         <tr>
           <th>No</th>
-          <th>Nama Lengkap</th>
+          <?php if ($this->fungsi->user_login()->role == 1){ ?>
+            <th>Nama Lengkap</th>
+          <?php } ?>
           <th>Tanggal</th>
           <th>Absensi Masuk</th>
           <th>Absensi Keluar</th>
@@ -76,7 +78,9 @@ p.left{
             <?php  $date = date('Y-m-d', strtotime($data->tgl_absen));?>
             <tr>
               <td><?=$no; ?></td>
+              <?php if ($this->fungsi->user_login()->role == 1){ ?>
               <td><?=$data->nama_lengkap?></td>
+              <?php } ?>
               <td><?=date_indo($data->tgl_absen)?></td>
               <td><?=$data->absen_masuk?></td>
               <td><?=$data->absen_pulang?></td>
