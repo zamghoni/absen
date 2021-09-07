@@ -13,7 +13,7 @@
           <tr>
             <th>No</th>
             <th>Nama Lengkap</th>
-            <th>Tanggal</th>
+            <th>Hari, Tanggal</th>
             <th>Absen Masuk</th>
             <th>Absen Pulang</th>
             <th>Status</th>
@@ -28,7 +28,7 @@
               <tr>
                 <td><?=$no?></td>
                 <td><?=$data->nama_lengkap?></td>
-                <td><?=date_indo($data->tgl_absen)?></td>
+                <td><?=longdate_indo($data->tgl_absen)?></td>
                 <td><?=$data->absen_masuk?> WIB</td>
                 <td><?php if ($data->absen_pulang == null){?>
                   Belum Absen Pulang
