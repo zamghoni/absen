@@ -1,9 +1,6 @@
 <style>
-table{
-  border-radius: .2rem;
-}
 #tabel1 {
-    margin-left: 15px;
+    margin-left: 5px;
     color: #444;
     border-collapse: collapse;
     border: 1px solid #f2f5f7;
@@ -28,6 +25,14 @@ table{
 p {
   text-align: center;
 }
+p.left{
+  text-align: left;
+  margin-left: 15px
+}
+#left{
+  text-align: left;
+  margin-left: 400px;
+}
 
 </style>
 <img src="assets/backend/img/kop.png" style="width: 100%">
@@ -39,7 +44,7 @@ p {
   </center></p>
 <?php } ?>
 <?php if ($this->input->post('id_user')){ ?>
-  <p><center>Nama Lengkap:
+  <p class="left">Nama Lengkap:
     <?php foreach ($user->result() as $key => $data){ ?>
       <?php if ($data->id == $this->input->post('id_user')){ ?>
         <span class="badge badge-primary" title="<?=$data->nama_lengkap?>"> <?=$data->nama_lengkap?></span>
@@ -47,10 +52,12 @@ p {
     <?php } ?>
   </p>
 <?php } ?>
-<br>
+<?php if ($this->fungsi->user_login()->role == 0) { ?>
+  <p class="left">Nama Lengkap: <?=$this->fungsi->user_login()->nama_lengkap?> </p>
+<?php } ?>
 <div class="card-body">
   <div class="table-responsive">
-    <table  class="table table-bordered table-hover" id="tabel1" width="100%" cellspacing="0" >
+    <table  class="table table-bordered table-hover atas" id="tabel1" width="100%" cellspacing="0" >
       <thead>
         <tr>
           <th>No</th>
@@ -88,6 +95,13 @@ p {
       </table>
       <br><br>
       <?php $date = date('Y-m-d'); ?>
+      <?php if ($this->fungsi->user_login()->role == 1){ ?>
+        <p id="left">Tegal, <?=date_indo($date)?> <br>
+        Kepala MI Muhammadiyah Debong Wetan</p>
+        <img src="assets/backend/img/ttd.png" height="180px" style="margin-left:275px">
+        <p id="left" style="margin-top:-70px"><b><u>Khafidz Mujtahid</u></b></p>
+    <?php } ?>
+
       <center>
         <strong>Dicetak pada :</strong> <?=longdate_indo($date); ?> <br> <strong>Pukul :</strong> <?=date('H:i:s') ?>
       </center>

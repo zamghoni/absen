@@ -49,7 +49,7 @@
         </div>
         <div class="d-flex align-items-center">
           <div>
-            <p class="mb-0 text-white">Terlamat Absensi</p>
+            <p class="mb-0 text-white">Terlambat Absensi</p>
           </div>
           <div class="ml-auto font-14 text-white">Data hari ini</div>
         </div>

@@ -93,7 +93,8 @@ class M_user extends CI_Model{
       'username' => $post['username'],
       'diubah' => date('Y-m-d H:i:s')
     ];
-    if (!empty($_FILES['foto']['name'])) {
+    $data = $this->M_user->get($post['id'])->row();
+    if (!empty($_FILES['foto']['name']) || $data->foto != null) {
       $upload = $this->_do_uploadfoto();
       $params['foto'] = $upload;
       unlink("./upload/foto/".$this->input->post('old_foto'));

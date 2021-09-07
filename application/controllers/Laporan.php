@@ -127,13 +127,23 @@ class Laporan extends CI_Controller{
       $writer->save('php://output');
     } else if (isset($_POST['cetak'])) {
       $this->load->library('pdf');
-      $data = array(
-        'page' => 'Absensi',
-        'subpage' => 'Laporan',
-        'row'  => $this->M_absensi->getall(),
-        'user' => $this->M_user->get(),
-        'pengaturan' => $this->M_pengaturan->get(1)->row(),
-      );
+      if ($this->fungsi->user_login()->role != 0) {
+        $data = array(
+          'page' => 'Absensi',
+          'subpage' => 'Laporan',
+          'user' => $this->M_user->get(),
+          'pengaturan' => $this->M_pengaturan->get(1)->row(),
+          'row'  => $this->M_absensi->getall(),
+        );
+      } else{
+        $data = array(
+          'page' => 'Absensi',
+          'subpage' => 'Laporan',
+          'user' => $this->M_user->get(),
+          'pengaturan' => $this->M_pengaturan->get(1)->row(),
+          'row'  => $this->M_absensi->get_user(),
+        );
+      }
       $this->load->view($this->folder.'lap_absensi', $data);
       $html = $this->output->get_output();
       $this->pdf->setPaper('A4', 'potrait');

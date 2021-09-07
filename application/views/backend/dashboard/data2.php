@@ -77,12 +77,15 @@
                     </select>
                 </div>
               </div>
+              <?php if(date('H:is') >= $pengaturan->jam_masuk){ ?>
               <div class="form-group row">
                 <label class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-8">
                   <button type="submit" name="absen_masuk" class="btn btn-sm btn-primary px-4" title="Simpan data absen masuk"><span class="bx bx-save"></span> Simpan Absen Masuk</button>
                 </div>
               </div>
+              <?php } ?>
+              <p class="text-danger">Mulai Absen Masuk pada pukul <?=$pengaturan->jam_masuk?> WIB s.d pukul <?=$pengaturan->bts_absen_masuk?> WIB apabila tombol simpan absensi belum tampil, silahkan <a href="javascript:window.location.reload(true)">Klik Disini</a></p>
               <?php echo form_close(); ?>
             </div>
           </div>
@@ -98,6 +101,7 @@
                 </div>
               </div>
                 <h4 class="mb-0">00:00:00</h4>
+                <p class="text-danger">Batas Absensi pulang dapat diases sampai pukul <?=$pengaturan->bts_absen_pulang?> WIB</p>
             </div>
           </div>
         </div>

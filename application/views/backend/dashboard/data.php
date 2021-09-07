@@ -98,6 +98,7 @@
               </div>
               <?php echo form_close(); ?>
             <?php } ?>
+            <p class="text-danger">Mulai Absen Masuk pada pukul <?=$pengaturan->jam_masuk?> WIB s.d pukul <?=$pengaturan->bts_absen_masuk?> WIB apabila tombol simpan absensi belum tampil, silahkan <a href="javascript:window.location.reload(true)">Klik Disini</a></p>
             </div>
           </div>
         </div>
@@ -130,6 +131,7 @@
                 </div>
               </div>
             <?php } ?>
+            <p class="text-danger">Batas Absensi pulang dapat diases sampai pukul <?=$pengaturan->bts_absen_pulang?> WIB</p>
             </div>
           </div>
         </div>
