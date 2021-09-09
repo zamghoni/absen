@@ -132,6 +132,8 @@ class M_user extends CI_Model{
 		}
     $this->db->where('id', $id);
     $this->db->delete('user');
+    $this->db->where('id_user', $id);
+    $this->db->delete('absensi');
 	}
 
   public function status1($id)
