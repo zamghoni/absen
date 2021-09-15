@@ -150,7 +150,8 @@ class Laporan extends CI_Controller{
       // $this->pdf->filename = "Laporan Surat Masuk.pdf";
       $this->pdf->load_html($html);
       $this->pdf->render();
-      $this->pdf->stream("Laporan Absensi.pdf", array('Attachment' => 0));
+      $this->pdf->stream("Laporan Absensi.pdf", array('Attachment' => false));
+      exit(0);
     } else if(isset($_POST['reset'])){
       redirect('laporan','refresh');
     }
